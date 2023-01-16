@@ -57,6 +57,7 @@ ChatBot::ChatBot(const ChatBot &src)
     _currentNode = src._currentNode;
     _rootNode = src._rootNode;
     _chatLogic = src._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
 
     std::cout << "ChatBot, End of Copy Constructor" << std::endl;
     
@@ -76,7 +77,7 @@ ChatBot& ChatBot::operator=(const ChatBot &src)
     _currentNode = src._currentNode;
     _rootNode = src._rootNode;
     _chatLogic = src._chatLogic;
-
+    _chatLogic->SetChatbotHandle(this);
     std::cout << "ChatBot: End of Copy Assignment" << std::endl;
 
     return *this;
@@ -97,6 +98,7 @@ ChatBot::ChatBot(ChatBot &&src)
     _rootNode = src._rootNode;
     src._rootNode = nullptr;
     _chatLogic = src._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
     src._chatLogic = nullptr;
 
     std::cout << "ChatBot, End of Move Constructor" << std::endl;
@@ -118,6 +120,7 @@ ChatBot& ChatBot::operator=(ChatBot &&src)
     _rootNode = src._rootNode;
     src._rootNode = nullptr;
     _chatLogic = src._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
     src._chatLogic = nullptr;
 
     std::cout << "ChatBot: End of Move Assignment" << std::endl;
